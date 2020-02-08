@@ -12,6 +12,7 @@ public class Passengers {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="passenger_id")
     private Long passengerId;
+
     private String name;
     private String mobile;
     private String gender;
