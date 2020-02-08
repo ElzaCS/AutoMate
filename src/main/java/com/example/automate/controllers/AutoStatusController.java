@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/autoStatus")
+@RequestMapping("/autoStatus")
 public class AutoStatusController {
 
     @Autowired
@@ -25,7 +25,7 @@ public class AutoStatusController {
         return autoStatusRepository.findAll();
     }
 
-    @RequestMapping(value = "{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
     public AutoStatus update(@PathVariable Long id, @RequestBody AutoStatus autoStatus){
         AutoStatus existingAutoStatus=autoStatusRepository.getOne(id);
         BeanUtils.copyProperties(autoStatus, existingAutoStatus, "id");

@@ -16,6 +16,7 @@ public class Passengers {
     private String name;
     private String mobile;
     private String gender;
+    private String password;
     private String is_riding;
     private String rating;
 
@@ -65,5 +66,13 @@ public class Passengers {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

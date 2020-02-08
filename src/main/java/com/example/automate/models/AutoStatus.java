@@ -13,8 +13,11 @@ public class AutoStatus {
     @Column(name = "auto_id")
     private Long autoId;
 
-    @Column(name="auto_position")
-    private String autoPosition;
+    @Column(name="auto_latitude")
+    private Float autoLatitude;
+
+    @Column(name="auto_longitude")
+    private Float autoLongitude;
 
     @Column(name="last_updated_at")
     private String lastUpdatedAt;
@@ -27,12 +30,20 @@ public class AutoStatus {
         this.autoId = autoId;
     }
 
-    public String getAutoPosition() {
-        return autoPosition;
+    public Float getAutoLatitude() {
+        return autoLatitude;
     }
 
-    public void setAutoPosition(String autoPosition) {
-        this.autoPosition = autoPosition;
+    public void setAutoLatitude(Float autoLatitude) {
+        this.autoLatitude = autoLatitude;
+    }
+
+    public Float getAutoLongitude() {
+        return autoLongitude;
+    }
+
+    public void setAutoLongitude(Float autoLongitude) {
+        this.autoLongitude = autoLongitude;
     }
 
     public String getLastUpdatedAt() {

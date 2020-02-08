@@ -5,6 +5,7 @@ import com.example.automate.response.DriversResponse;
 import com.example.automate.models.Drivers;
 import com.example.automate.repositories.DriverHistoryRepository;
 import com.example.automate.repositories.DriversRepository;
+import com.example.automate.response.LoginRequest;
 import lombok.var;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/drivers")
+@RequestMapping("/drivers")
 public class DriversController {
     @Autowired
     private DriversRepository driversRepository;
@@ -42,21 +43,35 @@ public class DriversController {
     }
 
     @GetMapping
-    @RequestMapping("/{id}")
+    @RequestMapping("getDrivers/{id}")
     public Drivers get(@PathVariable Long id) {
         return driversRepository.getOne(id);
     }
 
-    @PostMapping
+    @PostMapping("/signin")
     //@ResponseStatus(HttpStatus.CREATED)
-    public Drivers create(@RequestBody final Drivers famous5){
+    public Drivers signin(@RequestBody final Drivers famous5){
+
         return driversRepository.saveAndFlush(famous5);
     }
+
+    @PostMapping("/login")
+    //@ResponseStatus(HttpStatus.CREATED)
+    public Boolean login(@RequestBody final LoginRequest creds){
+        Drivers existingDriver = driversRepository.findByDrivername(creds.getUsername());
+        if (existingDriver.getPassword().equals(creds.getPassword()))
+            return true;
+        else
+            return false;
+    }
+
     @RequestMapping(value = "{id}",method = RequestMethod.DELETE)
     public void delete(@PathVariable Long id){
         //wont delete children records
         driversRepository.deleteById(id);
     }
+
+
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
     public Drivers update(@PathVariable Long id,@RequestBody Drivers famous5){
         Drivers existingFamous5=driversRepository.getOne(id);

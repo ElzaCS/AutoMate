@@ -8,6 +8,7 @@ import com.example.automate.repositories.FriendsRepository;
 import com.example.automate.repositories.PassengerHistoryRepository;
 import com.example.automate.repositories.PassengerRepository;
 import com.example.automate.response.DriversResponse;
+import com.example.automate.response.LoginRequest;
 import com.example.automate.response.PassengerResponse;
 import lombok.var;
 import org.springframework.beans.BeanUtils;
@@ -55,11 +56,23 @@ public class PassengerController {
         return passengerRepository.getOne(id);
     }
 
-    @PostMapping
+    @PostMapping("/signin")
     //@ResponseStatus(HttpStatus.CREATED)
-    public Passengers create(@RequestBody final Passengers famous5){
+    public Passengers signin(@RequestBody final Passengers famous5){
+
         return passengerRepository.saveAndFlush(famous5);
     }
+
+    @PostMapping("/login")
+    //@ResponseStatus(HttpStatus.CREATED)
+    public Boolean login(@RequestBody LoginRequest creds){
+        Passengers existingDriver = passengerRepository.findByName(creds.getUsername());
+        if (existingDriver.getPassword().equals(creds.getPassword()))
+            return true;
+        else
+            return false;
+    }
+
     @RequestMapping(value = "{id}",method = RequestMethod.DELETE)
     public void delete(@PathVariable Long id){
         //wont delete children records

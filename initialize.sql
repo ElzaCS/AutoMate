@@ -11,12 +11,13 @@ CREATE TABLE requests (
 
 CREATE TABLE autostatus (
     auto_id int(5) primary key auto_increment,
-    auto_position varchar(30),
+    auto_latitude float(30),
+    auto_longitude float(30),
     last_updated_at varchar(30));
 
-insert into autostatus (auto_position, last_updated_at) values ("0",now());
-insert into autostatus (auto_position, last_updated_at) values ("0",now());
-insert into autostatus (auto_position, last_updated_at) values ("0",now());
+insert into autostatus (auto_latitude, auto_longitude, last_updated_at) values (10.7618779,78.8198142,now());
+insert into autostatus (auto_latitude, auto_longitude, last_updated_at) values (10.7618779,78.8198142,now());
+insert into autostatus (auto_latitude, auto_longitude, last_updated_at) values (10.7618779,78.8198142,now());
 
 CREATE TABLE drivers (
   driver_id int(5) auto_increment primary key,
@@ -52,6 +53,7 @@ CREATE TABLE drivers_history (
  CREATE TABLE passengers (
     passenger_id int(5) auto_increment primary key,
     name varchar(30),
+    password varchar(30),
     mobile varchar(30),
     is_riding varchar(30),
     rating varchar(30),
