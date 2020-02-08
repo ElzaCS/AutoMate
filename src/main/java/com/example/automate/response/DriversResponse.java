@@ -17,7 +17,6 @@ public class DriversResponse {
 
     private String drivername;
     private Long rating;
-    private String password;
     private String auto_no;
     private String mobile_no;
     private List<DriverHistory> history;
@@ -44,14 +43,6 @@ public class DriversResponse {
 
     public void setRating(Long rating) {
         this.rating = rating;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getAuto_no() {

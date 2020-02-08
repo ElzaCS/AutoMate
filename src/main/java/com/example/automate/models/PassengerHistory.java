@@ -1,5 +1,6 @@
 package com.example.automate.models;
 
+import com.example.automate.util.Points;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
@@ -17,9 +18,9 @@ public class PassengerHistory {
     @Column(name="passenger_id")
     private Long passengerId;
     private String date;
-    private Float rating;
-    private String source;
-    private String destination;
+  //  private Float rating;
+    private Points source;
+    private Points destination;
 
     public Long getId() {
         return id;
@@ -46,27 +47,27 @@ public class PassengerHistory {
         this.date = date;
     }
 
-    public Float getRating() {
-        return rating;
-    }
+//    public Float getRating() {
+//        return rating;
+//    }
+//
+//    public void setRating(Float rating) {
+//        this.rating = rating;
+//    }
 
-    public void setRating(Float rating) {
-        this.rating = rating;
-    }
-
-    public String getSource() {
+    public Points getSource() {
         return source;
     }
 
-    public void setSource(String source) {
+    public void setSource(Points source) {
         this.source = source;
     }
 
-    public String getDestination() {
+    public Points getDestination() {
         return destination;
     }
 
-    public void setDestination(String destination) {
+    public void setDestination(Points destination) {
         this.destination = destination;
     }
 }

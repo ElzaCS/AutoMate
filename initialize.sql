@@ -5,7 +5,10 @@ USE e_rickshaw;
 CREATE TABLE requests (
     request_id int(5) auto_increment primary key,
     user_id int(5),
-    source varchar(30),
+    source_latitude float(30),
+    source_longitude float(30),
+    destination_latitude float(30),
+    destination_longitude float(30),
     destination varchar(30),
     request_time varchar(30));
 
@@ -38,20 +41,21 @@ CREATE TABLE passenger_history (
     passenger_id int(5),
     date varchar(30),
     destination varchar(30),
-    source varchar(30),
-    rating varchar(30));
+    source varchar(30));
 
 CREATE TABLE drivers_history (
     ride_id int(5) auto_increment primary key,
     driver_id int(5),
+    passenger_id int(5),
     driver_rating int(5),
     no_of_passengers int(5),
     source varchar(30),
     destination varchar(30),
-    date varchar(30));
+    start_time varchar(30));
 
  CREATE TABLE passengers (
-    passenger_id int(5) auto_increment primary key,
+    passenger_id int(5) primary key auto_increment,
+    roll_no int(10),
     name varchar(30),
     password varchar(30),
     mobile varchar(30),
@@ -62,4 +66,7 @@ CREATE TABLE drivers_history (
 CREATE TABLE rides (
     id int(5) auto_increment primary key,
     driver_id int(5),
-    next_stop varchar(30));
+    passenger_id varchar(100),
+    stops varchar(30),
+    next_stop int(10)
+    capacity int(3));

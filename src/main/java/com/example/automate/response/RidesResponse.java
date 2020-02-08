@@ -11,8 +11,10 @@ import javax.persistence.Id;
 public class RidesResponse {
     @Id
     private Long id;
-    private Long driver_id;
-    private Drivers driver;
+
+    private Long driverId;
+    private Long passengerId;
+    private String current_stop;
     private String next_stop;
 
 }

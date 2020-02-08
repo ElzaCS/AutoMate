@@ -3,6 +3,7 @@ package com.example.automate.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 
 @Entity
 @Table(name = "rides")
@@ -11,8 +12,24 @@ public class Rides {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long driver_id;
+
+    @Column(name="driver_id")
+    private Long driverId;
+
+    @Column(name="passenger_id")
+    private String passengerId;
+
+    private String stops;
     private String next_stop;
+    private Integer capacity;
+
+    public Integer getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(Integer capacity) {
+        this.capacity = capacity;
+    }
 
     public Long getId() {
         return id;
@@ -22,12 +39,12 @@ public class Rides {
         this.id = id;
     }
 
-    public Long getDriver_id() {
-        return driver_id;
+    public Long getDriverId() {
+        return driverId;
     }
 
-    public void setDriver_id(Long driver_id) {
-        this.driver_id = driver_id;
+    public void setDriverId(Long driverId) {
+        this.driverId = driverId;
     }
 
     public String getNext_stop() {
@@ -36,5 +53,21 @@ public class Rides {
 
     public void setNext_stop(String next_stop) {
         this.next_stop = next_stop;
+    }
+
+    public String getStops() {
+        return stops;
+    }
+
+    public void setStops(String stops) {
+        this.stops = stops;
+    }
+
+    public String getPassengerId() {
+        return passengerId;
+    }
+
+    public void setPassengerId(String passengerId) {
+        this.passengerId = passengerId;
     }
 }

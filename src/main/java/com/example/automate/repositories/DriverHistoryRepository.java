@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface DriverHistoryRepository extends JpaRepository<DriverHistory, Long> {
     List<DriverHistory> findAllByDriverId(Long id);
+    List<DriverHistory> findAllByPassengerId(Long id);
 }

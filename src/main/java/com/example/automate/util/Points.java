@@ -13,7 +13,7 @@ public enum Points {
     Beryl,
     Aquamarine,
     Amber,
-    Zircoin,
+    Zircon,
     SC,
     Guest_House,
     Library,
@@ -23,5 +23,8 @@ public enum Points {
     MM1,
     MM2,
     F_Mess,
-    DoMS
+    DoMS,
+    COE,
+    Chemical_Department,
+    SAC
 }

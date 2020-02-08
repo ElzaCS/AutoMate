@@ -19,10 +19,10 @@ public class PassengerResponse {
     private String name;
     private String mobile;
     private String gender;
-    private String is_riding;
-    private String rating;
+//    private String is_riding;
+//    private String rating;
     private List<Friends> friends;
-    private List<PassengerHistory> histories;
+    private List<DriverHistory> histories;
 
     public Long getPassengerId() {
         return passengerId;
@@ -56,21 +56,21 @@ public class PassengerResponse {
         this.gender = gender;
     }
 
-    public String getIs_riding() {
-        return is_riding;
-    }
-
-    public void setIs_riding(String is_riding) {
-        this.is_riding = is_riding;
-    }
-
-    public String getRating() {
-        return rating;
-    }
-
-    public void setRating(String rating) {
-        this.rating = rating;
-    }
+//    public String getIs_riding() {
+//        return is_riding;
+//    }
+//
+//    public void setIs_riding(String is_riding) {
+//        this.is_riding = is_riding;
+//    }
+//
+//    public String getRating() {
+//        return rating;
+//    }
+//
+//    public void setRating(String rating) {
+//        this.rating = rating;
+//    }
 
     public List<Friends> getFriends() {
         return friends;
@@ -80,11 +80,11 @@ public class PassengerResponse {
         this.friends = friends;
     }
 
-    public List<PassengerHistory> getHistories() {
+    public List<DriverHistory> getHistories() {
         return histories;
     }
 
-    public void setHistories(List<PassengerHistory> histories) {
+    public void setHistories(List<DriverHistory> histories) {
         this.histories = histories;
     }
 }

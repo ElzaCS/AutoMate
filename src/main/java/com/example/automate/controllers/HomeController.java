@@ -24,13 +24,13 @@ public class HomeController {
 
     @GetMapping
     @RequestMapping("/")
-    public Map getStatus(){
-        Map map=new HashMap<String, String>();
+    public Map getStatus() {
+        Map map = new HashMap<String, String>();
         //map.put("app-version",appVersion);
-        map.put("Greeting",greeting);
-        map.put("Famous5",famous5loc);
-        map.put("St.Clare",stclareloc);
-        map.put("Users",usersloc);
+        map.put("Greeting", greeting);
+        map.put("Famous5", famous5loc);
+        map.put("St.Clare", stclareloc);
+        map.put("Users", usersloc);
         return map;
     }
 }

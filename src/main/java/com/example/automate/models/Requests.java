@@ -1,5 +1,6 @@
 package com.example.automate.models;
 
+import com.example.automate.util.Points;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -16,8 +17,14 @@ public class Requests {
     @Column(name="user_id")
     private Long userId;
 
-    private String source;
-    private String destination;
+    private Float sourceLatitude;
+    private Float sourceLongitude;
+
+    @Column(name="destination_latitude")
+    private Float destinationLatitude;
+
+    @Column(name="destination_longitude")
+    private Float destinationLongitude;
 
     @Column(name="request_time")
     private String requestTime;
@@ -38,20 +45,36 @@ public class Requests {
         this.userId = userId;
     }
 
-    public String getSource() {
-        return source;
+    public Float getSourceLatitude() {
+        return sourceLatitude;
     }
 
-    public void setSource(String source) {
-        this.source = source;
+    public void setSourceLatitude(Float sourceLatitude) {
+        this.sourceLatitude = sourceLatitude;
     }
 
-    public String getDestination() {
-        return destination;
+    public Float getSourceLongitude() {
+        return sourceLongitude;
     }
 
-    public void setDestination(String destination) {
-        this.destination = destination;
+    public void setSourceLongitude(Float sourceLongitude) {
+        this.sourceLongitude = sourceLongitude;
+    }
+
+    public Float getDestinationLatitude() {
+        return destinationLatitude;
+    }
+
+    public void setDestinationLatitude(Float destinationLatitude) {
+        this.destinationLatitude = destinationLatitude;
+    }
+
+    public Float getDestinationLongitude() {
+        return destinationLongitude;
+    }
+
+    public void setDestinationLongitude(Float destinationLongitude) {
+        this.destinationLongitude = destinationLongitude;
     }
 
     public String getRequestTime() {

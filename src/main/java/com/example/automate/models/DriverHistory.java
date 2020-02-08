@@ -1,5 +1,6 @@
 package com.example.automate.models;
 
+import com.example.automate.util.Points;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jdk.jfr.DataAmount;
 import lombok.Builder;
@@ -16,11 +17,15 @@ public class DriverHistory {
 
     @Column(name="driver_id")
     private Long driverId;
+
+    @Column(name="passenger_id")
+    private Long passengerId;
+
     private Long driver_rating;
     private Long no_of_passengers;
-    private String source;
-    private String destination;
-    private String date;
+    private Points source;
+    private Points destination;
+    private String start_time;
 
     public Long getRide_id() {
         return ride_id;
@@ -54,27 +59,35 @@ public class DriverHistory {
         this.no_of_passengers = no_of_passengers;
     }
 
-    public String getSource() {
+    public Points getSource() {
         return source;
     }
 
-    public void setSource(String source) {
+    public void setSource(Points source) {
         this.source = source;
     }
 
-    public String getDestination() {
+    public Points getDestination() {
         return destination;
     }
 
-    public void setDestination(String destination) {
+    public void setDestination(Points destination) {
         this.destination = destination;
     }
 
-    public String getDate() {
-        return date;
+    public Long getPassengerId() {
+        return passengerId;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setPassengerId(Long passengerId) {
+        this.passengerId = passengerId;
+    }
+
+    public String getStart_time() {
+        return start_time;
+    }
+
+    public void setStart_time(String start_time) {
+        this.start_time = start_time;
     }
 }

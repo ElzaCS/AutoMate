@@ -6,4 +6,5 @@ import com.example.automate.models.Rides;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RequestRepository extends JpaRepository<Requests, Long> {
+    Requests findFirstByOrderByRequestIdDesc();
 }

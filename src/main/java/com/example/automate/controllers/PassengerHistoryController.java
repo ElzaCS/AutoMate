@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/passengerHistory")
+@RequestMapping("/passengerHistory")
 public class PassengerHistoryController {
     @Autowired
     private PassengerHistoryRepository passengerHistoryRepository;

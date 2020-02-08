@@ -1,14 +1,11 @@
 package com.example.automate.controllers;
 
-import com.example.automate.models.DriverHistory;
-import com.example.automate.models.Drivers;
-import com.example.automate.models.Friends;
 import com.example.automate.models.Passengers;
+import com.example.automate.repositories.DriverHistoryRepository;
 import com.example.automate.repositories.FriendsRepository;
 import com.example.automate.repositories.PassengerHistoryRepository;
 import com.example.automate.repositories.PassengerRepository;
-import com.example.automate.response.DriversResponse;
-import com.example.automate.response.LoginRequest;
+import com.example.automate.response.UserLoginRequest;
 import com.example.automate.response.PassengerResponse;
 import lombok.var;
 import org.springframework.beans.BeanUtils;
@@ -19,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/passengers")
+@RequestMapping("/passengers")
 public class PassengerController {
     @Autowired
     private PassengerRepository passengerRepository;
@@ -29,6 +26,9 @@ public class PassengerController {
 
     @Autowired
     private PassengerHistoryRepository passengerHistoryRepository;
+
+    @Autowired
+    private DriverHistoryRepository driverHistoryRepository;
 
     @GetMapping
     public List<PassengerResponse> list() {
@@ -40,11 +40,11 @@ public class PassengerController {
                     .passengerId(passenger.getPassengerId())
                     .name(passenger.getName())
                     .gender(passenger.getGender())
-                    .is_riding(passenger.getIs_riding())
+                    //.is_riding(passenger.getIs_riding())
                     .mobile(passenger.getMobile())
-                    .rating(passenger.getRating())
+                    //.rating(passenger.getRating())
                     .friends(friendsRepository.findAllByUserId(passenger.getPassengerId()))
-                    .histories(passengerHistoryRepository.findByPassengerId(passenger.getPassengerId()))
+                    .histories(driverHistoryRepository.findAllByPassengerId(passenger.getPassengerId()))
                     .build());
         }
         return passengerDetails;
@@ -65,8 +65,8 @@ public class PassengerController {
 
     @PostMapping("/login")
     //@ResponseStatus(HttpStatus.CREATED)
-    public Boolean login(@RequestBody LoginRequest creds){
-        Passengers existingDriver = passengerRepository.findByName(creds.getUsername());
+    public Boolean login(@RequestBody UserLoginRequest creds){
+        Passengers existingDriver = passengerRepository.findByRollNo(creds.getRoll_no());
         if (existingDriver.getPassword().equals(creds.getPassword()))
             return true;
         else

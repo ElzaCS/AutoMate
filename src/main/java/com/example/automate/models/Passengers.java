@@ -14,11 +14,13 @@ public class Passengers {
     private Long passengerId;
 
     private String name;
+    @Column(name="roll_no")
+    private Long rollNo;
     private String mobile;
     private String gender;
     private String password;
-    private String is_riding;
-    private String rating;
+//    private String is_riding;
+ //   private String rating;
 
     public Long getPassengerId() {
         return passengerId;
@@ -44,21 +46,21 @@ public class Passengers {
         this.mobile = mobile;
     }
 
-    public String getIs_riding() {
-        return is_riding;
-    }
-
-    public void setIs_riding(String is_riding) {
-        this.is_riding = is_riding;
-    }
-
-    public String getRating() {
-        return rating;
-    }
-
-    public void setRating(String rating) {
-        this.rating = rating;
-    }
+//    public String getIs_riding() {
+//        return is_riding;
+//    }
+//
+//    public void setIs_riding(String is_riding) {
+//        this.is_riding = is_riding;
+//    }
+//
+//    public String getRating() {
+//        return rating;
+//    }
+//
+//    public void setRating(String rating) {
+//        this.rating = rating;
+//    }
 
     public String getGender() {
         return gender;
@@ -74,5 +76,13 @@ public class Passengers {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Long getRollNo() {
+        return rollNo;
+    }
+
+    public void setRollNo(Long rollNo) {
+        this.rollNo = rollNo;
     }
 }

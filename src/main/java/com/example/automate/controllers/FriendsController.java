@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/friends")
+@RequestMapping("/friends")
 public class FriendsController {
     @Autowired
     private FriendsRepository friendsRepository;
@@ -27,17 +27,19 @@ public class FriendsController {
 
     @PostMapping
     //@ResponseStatus(HttpStatus.CREATED)
-    public Friends create(@RequestBody final Friends famous5){
+    public Friends create(@RequestBody final Friends famous5) {
         return friendsRepository.saveAndFlush(famous5);
     }
-    @RequestMapping(value = "{id}",method = RequestMethod.DELETE)
-    public void delete(@PathVariable Long id){
+
+    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable Long id) {
         //wont delete children records
         friendsRepository.deleteById(id);
     }
+
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
-    public Friends update(@PathVariable Long id, @RequestBody Friends famous5){
-        Friends existingFamous5=friendsRepository.getOne(id);
+    public Friends update(@PathVariable Long id, @RequestBody Friends famous5) {
+        Friends existingFamous5 = friendsRepository.getOne(id);
         BeanUtils.copyProperties(famous5, existingFamous5, "id");
         return friendsRepository.saveAndFlush(existingFamous5);
     }
