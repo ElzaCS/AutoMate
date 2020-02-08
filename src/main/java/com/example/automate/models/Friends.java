@@ -12,6 +12,9 @@ public class Friends {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long friend_id;
 
+    @Column(name="user_id")
+    private Long userId;
+
     @Column(name="mobile_no")
     private String mobile_no;
 

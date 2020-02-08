@@ -1,6 +1,8 @@
 package com.example.automate.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jdk.jfr.DataAmount;
+import lombok.Builder;
 
 import javax.persistence.*;
 
@@ -11,7 +13,9 @@ public class DriverHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ride_id;
-    private Long driver_id;
+
+    @Column(name="driver_id")
+    private Long driverId;
     private Long driver_rating;
     private Long no_of_passengers;
     private String source;
@@ -26,12 +30,12 @@ public class DriverHistory {
         this.ride_id = ride_id;
     }
 
-    public Long getDriver_id() {
-        return driver_id;
+    public Long getDriverId() {
+        return driverId;
     }
 
-    public void setDriver_id(Long driver_id) {
-        this.driver_id = driver_id;
+    public void setDriverId(Long driverId) {
+        this.driverId = driverId;
     }
 
     public Long getDriver_rating() {

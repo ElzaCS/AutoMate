@@ -1,17 +1,17 @@
-package com.example.automate.models;
+package com.example.automate.response;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.example.automate.models.DriverHistory;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import lombok.Builder;
+import lombok.Singular;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Id;
 import java.util.List;
 
-@Entity
-@Table(name = "drivers")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Drivers {
+@Builder
+public class DriversResponse {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name="driver_id")
     private Long driverId;
 
@@ -20,7 +20,7 @@ public class Drivers {
     private String password;
     private String auto_no;
     private String mobile_no;
-
+    private List<DriverHistory> history;
 
     public Long getDriverId() {
         return driverId;
@@ -36,6 +36,14 @@ public class Drivers {
 
     public void setDrivername(String drivername) {
         this.drivername = drivername;
+    }
+
+    public Long getRating() {
+        return rating;
+    }
+
+    public void setRating(Long rating) {
+        this.rating = rating;
     }
 
     public String getPassword() {
@@ -54,19 +62,19 @@ public class Drivers {
         this.auto_no = auto_no;
     }
 
-    public Long getRating() {
-        return rating;
-    }
-
-    public void setRating(Long rating) {
-        this.rating = rating;
-    }
-
     public String getMobile_no() {
         return mobile_no;
     }
 
     public void setMobile_no(String mobile_no) {
         this.mobile_no = mobile_no;
+    }
+
+    public List<DriverHistory> getHistory() {
+        return history;
+    }
+
+    public void setHistory(List<DriverHistory> history) {
+        this.history = history;
     }
 }

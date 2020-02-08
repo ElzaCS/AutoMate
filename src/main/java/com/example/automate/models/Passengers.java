@@ -10,18 +10,20 @@ import javax.persistence.*;
 public class Passengers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long passenger_id;
+    @Column(name="passenger_id")
+    private Long passengerId;
     private String name;
     private String mobile;
+    private String gender;
     private String is_riding;
     private String rating;
 
-    public Long getPassenger_id() {
-        return passenger_id;
+    public Long getPassengerId() {
+        return passengerId;
     }
 
-    public void setPassenger_id(Long passenger_id) {
-        this.passenger_id = passenger_id;
+    public void setPassengerId(Long passengerId) {
+        this.passengerId = passengerId;
     }
 
     public String getName() {
@@ -54,5 +56,13 @@ public class Passengers {
 
     public void setRating(String rating) {
         this.rating = rating;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

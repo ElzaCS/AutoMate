@@ -21,8 +21,8 @@ public class DriverHistoryController {
 
     @GetMapping
     @RequestMapping("/{id}")
-    public DriverHistory get(@PathVariable Long id) {
-        return driverHistoryRepository.getOne(id);
+    public List<DriverHistory> get(@PathVariable Long id) {
+        return driverHistoryRepository.findAllByDriverId(id);
     }
 
     @PostMapping

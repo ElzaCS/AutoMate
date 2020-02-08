@@ -14,6 +14,8 @@ public class PassengerHistory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="passenger_id")
+    private Long passengerId;
     private String date;
     private Float rating;
     private String source;
@@ -30,6 +32,14 @@ public class PassengerHistory {
     @Column(name = "date")
     public String getDate() {
         return date;
+    }
+
+    public Long getPassengerId() {
+        return passengerId;
+    }
+
+    public void setPassengerId(Long passengerId) {
+        this.passengerId = passengerId;
     }
 
     public void setDate(String date) {
