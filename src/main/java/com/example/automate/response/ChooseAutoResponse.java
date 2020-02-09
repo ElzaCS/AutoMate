@@ -6,11 +6,11 @@ import lombok.Builder;
 public class ChooseAutoResponse {
     private Integer autoId;
 
-    public Integer getId() {
+    public Integer getAutoId() {
         return autoId;
     }
 
-    public void setId(Integer id) {
-        this.autoId = id;
+    public void setAutoId(Integer autoId) {
+        this.autoId = autoId;
     }
 }

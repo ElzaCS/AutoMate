@@ -69,16 +69,17 @@ public class RidesController {
         Requests request = requestRepository.findFirstByOrderByRequestIdDesc();
         Float minLatitude = request.getSourceLatitude() - autostatus.get(0).getAutoLatitude();
         Float minLongitude = request.getSourceLongitude() - autostatus.get(0).getAutoLongitude();
-
-        Float diffLatitude, diffLongitude;
+        Float minDist=(minLatitude*minLatitude)+(minLatitude*minLongitude);
+        Float diffLatitude, diffLongitude, actualDist;
         Integer index=0,c=0;
 
         for (var autos : autostatus) {
             diffLatitude = request.getSourceLatitude() - autos.getAutoLatitude();
             diffLongitude = request.getSourceLongitude() - autos.getAutoLongitude();
-            if (minLatitude + minLongitude > diffLatitude + diffLongitude){
-                minLatitude=diffLatitude;
-                minLongitude=diffLongitude;
+            actualDist=(diffLatitude*diffLatitude)+(diffLongitude*diffLongitude);
+
+            if (actualDist < minDist){
+                minDist=actualDist;
                 index=c;
             }
             c++;
