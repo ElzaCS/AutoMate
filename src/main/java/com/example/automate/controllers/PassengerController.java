@@ -35,7 +35,7 @@ public class PassengerController {
 
         List<Passengers> passengers= passengerRepository.findAll();
         List<PassengerResponse> passengerDetails=new ArrayList<>();
-        for (var passenger : passengers){
+        for (Passengers passenger : passengers){
             passengerDetails.add(PassengerResponse.builder()
                     .passengerId(passenger.getPassengerId())
                     .name(passenger.getName())

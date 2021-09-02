@@ -2,8 +2,6 @@ package com.example.automate.models;
 
 import com.example.automate.util.Points;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jdk.jfr.DataAmount;
-import lombok.Builder;
 
 import javax.persistence.*;
 
