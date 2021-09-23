@@ -21,6 +21,15 @@ public class DriversResponse {
     private String mobile_no;
     private List<DriverHistory> history;
 
+    public DriversResponse(Long driverId, String drivername, Long rating, String auto_no, String mobile_no, List<DriverHistory> history) {
+        this.driverId = driverId;
+        this.drivername = drivername;
+        this.rating = rating;
+        this.auto_no = auto_no;
+        this.mobile_no = mobile_no;
+        this.history = history;
+    }
+
     public Long getDriverId() {
         return driverId;
     }

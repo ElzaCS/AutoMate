@@ -22,6 +22,16 @@ public class Passengers {
 //    private String is_riding;
  //   private String rating;
 
+
+    public Passengers(Long passengerId, String name, Long rollNo, String mobile, String gender, String password) {
+        this.passengerId = passengerId;
+        this.name = name;
+        this.rollNo = rollNo;
+        this.mobile = mobile;
+        this.gender = gender;
+        this.password = password;
+    }
+
     public Long getPassengerId() {
         return passengerId;
     }

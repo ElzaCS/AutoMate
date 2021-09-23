@@ -24,6 +24,15 @@ public class PassengerResponse {
     private List<Friends> friends;
     private List<DriverHistory> histories;
 
+    public PassengerResponse(Long passengerId, String name, String mobile, String gender, List<Friends> friends, List<DriverHistory> histories) {
+        this.passengerId = passengerId;
+        this.name = name;
+        this.mobile = mobile;
+        this.gender = gender;
+        this.friends = friends;
+        this.histories = histories;
+    }
+
     public Long getPassengerId() {
         return passengerId;
     }

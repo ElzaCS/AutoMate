@@ -36,16 +36,18 @@ public class PassengerController {
         List<Passengers> passengers= passengerRepository.findAll();
         List<PassengerResponse> passengerDetails=new ArrayList<>();
         for (Passengers passenger : passengers){
-            passengerDetails.add(PassengerResponse.builder()
-                    .passengerId(passenger.getPassengerId())
-                    .name(passenger.getName())
-                    .gender(passenger.getGender())
-                    //.is_riding(passenger.getIs_riding())
-                    .mobile(passenger.getMobile())
-                    //.rating(passenger.getRating())
-                    .friends(friendsRepository.findAllByUserId(passenger.getPassengerId()))
-                    .histories(driverHistoryRepository.findAllByPassengerId(passenger.getPassengerId()))
-                    .build());
+            passengerDetails.add(new PassengerResponse(passenger.getPassengerId(), passenger.getName(), passenger.getMobile(), passenger.getGender(),
+                    friendsRepository.findAllByUserId(passenger.getPassengerId()), driverHistoryRepository.findAllByPassengerId(passenger.getPassengerId())));
+//            passengerDetails.add(PassengerResponse.builder()
+//                    .passengerId(passenger.getPassengerId())
+//                    .name(passenger.getName())
+//                    .gender(passenger.getGender())
+//                    //.is_riding(passenger.getIs_riding())
+//                    .mobile(passenger.getMobile())
+//                    //.rating(passenger.getRating())
+//                    .friends(friendsRepository.findAllByUserId(passenger.getPassengerId()))
+//                    .histories(driverHistoryRepository.findAllByPassengerId(passenger.getPassengerId()))
+//                    .build());
         }
         return passengerDetails;
     }

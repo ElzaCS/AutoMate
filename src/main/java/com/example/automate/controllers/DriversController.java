@@ -28,15 +28,17 @@ public class DriversController {
         // return driversRepository.findAll();
         List<Drivers> drivers = driversRepository.findAll();
         List<DriversResponse> driversDetails = new ArrayList<>();
-        for (var driver : drivers) {
-            driversDetails.add(DriversResponse.builder()
-                    .driverId(driver.getDriverId())
-                    .auto_no(driver.getAuto_no())
-                    .drivername(driver.getDrivername())
-                    .mobile_no(driver.getMobile_no())
-                    .rating(driver.getRating())
-                    .history(driverHistoryRepository.findAllByDriverId(driver.getDriverId()))
-                    .build());
+        for (Drivers driver : drivers) {
+            driversDetails.add(new DriversResponse(driver.getDriverId(), driver.getDrivername(), driver.getRating(), driver.getAuto_no(),
+                    driver.getMobile_no(), driverHistoryRepository.findAllByDriverId(driver.getDriverId())));
+//            driversDetails.add(DriversResponse.builder()
+//                    .driverId(driver.getDriverId())
+//                    .auto_no(driver.getAuto_no())
+//                    .drivername(driver.getDrivername())
+//                    .mobile_no(driver.getMobile_no())
+//                    .rating(driver.getRating())
+//                    .history(driverHistoryRepository.findAllByDriverId(driver.getDriverId()))
+//                    .build());
         }
         return driversDetails;
     }

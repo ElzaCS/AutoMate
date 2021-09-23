@@ -35,14 +35,16 @@ public class DriverHistoryController {
     //@ResponseStatus(HttpStatus.CREATED)
     public DriversResponse checkin(@RequestBody final DriverHistory driver) {
         Drivers givenDriver = driversRepository.findByDriverId(driver.getDriverId());
-        DriversResponse drivers = DriversResponse.builder()
-                .driverId(driver.getDriverId())
-                .auto_no(givenDriver.getAuto_no())
-                .drivername(givenDriver.getDrivername())
-                .mobile_no(givenDriver.getMobile_no())
-                .rating(driver.getDriver_rating())
-                .history(driverHistoryRepository.findAllByDriverId(driver.getDriverId()))
-                .build();
+        DriversResponse drivers = new DriversResponse(driver.getDriverId(), givenDriver.getDrivername(), driver.getDriver_rating(), givenDriver.getAuto_no(),
+                givenDriver.getMobile_no(), driverHistoryRepository.findAllByDriverId(driver.getDriverId()));
+//        DriversResponse drivers = DriversResponse.builder()
+//                .driverId(driver.getDriverId())
+//                .auto_no(givenDriver.getAuto_no())
+//                .drivername(givenDriver.getDrivername())
+//                .mobile_no(givenDriver.getMobile_no())
+//                .rating(driver.getDriver_rating())
+//                .history(driverHistoryRepository.findAllByDriverId(driver.getDriverId()))
+//                .build();
 
         driverHistoryRepository.saveAndFlush(driver);
         return drivers;

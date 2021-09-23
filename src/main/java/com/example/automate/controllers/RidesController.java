@@ -73,7 +73,7 @@ public class RidesController {
         Float diffLatitude, diffLongitude, actualDist;
         Integer index=0,c=0;
 
-        for (var autos : autostatus) {
+        for (AutoStatus autos : autostatus) {
             diffLatitude = request.getSourceLatitude() - autos.getAutoLatitude();
             diffLongitude = request.getSourceLongitude() - autos.getAutoLongitude();
             actualDist=(diffLatitude*diffLatitude)+(diffLongitude*diffLongitude);
@@ -84,6 +84,7 @@ public class RidesController {
             }
             c++;
         }
-        return ChooseAutoResponse.builder().autoId(index+1).build();
+        return new ChooseAutoResponse(index+1);
+//        return ChooseAutoResponse.builder().autoId(index+1).build();
     }
 }
