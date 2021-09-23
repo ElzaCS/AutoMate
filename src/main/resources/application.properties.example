@@ -1,0 +1,3 @@
+db_user=
+pass=
+db_url=jdbc:mysql://localhost:3306/e_rickshaw
