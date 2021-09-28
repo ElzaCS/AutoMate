@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @EnableAutoConfiguration
 @SpringBootApplication
-public class BooksApplication {
+public class AutoMateApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BooksApplication.class, args);
+		SpringApplication.run(AutoMateApplication.class, args);
 	}
 
 }

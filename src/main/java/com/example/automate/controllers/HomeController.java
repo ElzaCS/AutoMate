@@ -14,13 +14,27 @@ public class HomeController {
     private String appVersion;
     @Value("welcome!")
     private String greeting;
-    @Value("/api/v1/famous5")
-    private String famous5loc;
-    @Value("/api/v1/stclare")
-    private String stclareloc;
-    @Value("/api/v1/users")
-    private String usersloc;
+    @Value("/v2/api-docs")
+    private String swaggerJsonLoc;
+    @Value("swagger-ui/")
+    private String swaggerUiLoc;
 
+    @Value("/drivers")
+    private String driversLoc;
+    @Value("/autoStatus")
+    private String autoStatusLoc;
+    @Value("/driverHistory")
+    private String driverHistoryLcc;
+    @Value("/friends")
+    private String friendsLoc;
+    @Value("/passengers")
+    private String passengersLoc;
+    @Value("/passengerHistory")
+    private String passengerHistoryLoc;
+    @Value("/requests")
+    private String requestsLoc;
+    @Value("/rides")
+    private String ridesLoc;
 
     @GetMapping
     @RequestMapping("/")
@@ -28,9 +42,17 @@ public class HomeController {
         Map map = new HashMap<String, String>();
         //map.put("app-version",appVersion);
         map.put("Greeting", greeting);
-        map.put("Famous5", famous5loc);
-        map.put("St.Clare", stclareloc);
-        map.put("Users", usersloc);
+        map.put("Swagger JSON", swaggerJsonLoc);
+        map.put("Swagger UI", swaggerUiLoc);
+
+        map.put("Drivers", driversLoc);
+        map.put("Auto-Status", autoStatusLoc);
+        map.put("Driver-History", driverHistoryLcc);
+        map.put("Friends", friendsLoc);
+        map.put("Passengers", passengersLoc);
+        map.put("Passenger-History", passengerHistoryLoc);
+        map.put("Requests", requestsLoc);
+        map.put("Rides", ridesLoc);
         return map;
     }
 }

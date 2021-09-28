@@ -22,6 +22,7 @@ public class Passengers {
 //    private String is_riding;
  //   private String rating;
 
+    public Passengers(){}
 
     public Passengers(Long passengerId, String name, Long rollNo, String mobile, String gender, String password) {
         this.passengerId = passengerId;

@@ -26,4 +26,6 @@ For more information, visit [DWoC](https://dwoc.io/)
 ### Setup
 1. Fork and clone the repository: `git clone https://github.com/<YOUR-USERNAME>/AutoMate`
 2. Make a file named `application.properties` in `src/main/resources` folder and copy the contents of `application.properties.example`. Set the database connection details in `application.properties`, as required
-3. Run `src/main/java/com/example/automate/BooksApplication.java`
+3. Run `src/main/java/com/example/automate/AutoMateApplication.java`.
+4. The application will be running at `http://localhost:<port>/`. Port is currently set to 8090 in `application.yml` file.
+<br />   The routes can be tested with swagger at `http://localhost:<port>/swagger-ui/`.
