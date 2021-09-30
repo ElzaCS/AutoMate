@@ -1,11 +1,13 @@
 package com.example.automate.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "autostatus")
+@Getter @Setter @Builder @AllArgsConstructor @NoArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class AutoStatus {
     @Id
@@ -22,35 +24,4 @@ public class AutoStatus {
     @Column(name="last_updated_at")
     private String lastUpdatedAt;
 
-    public Long getAutoId() {
-        return autoId;
-    }
-
-    public void setAutoId(Long autoId) {
-        this.autoId = autoId;
-    }
-
-    public Float getAutoLatitude() {
-        return autoLatitude;
-    }
-
-    public void setAutoLatitude(Float autoLatitude) {
-        this.autoLatitude = autoLatitude;
-    }
-
-    public Float getAutoLongitude() {
-        return autoLongitude;
-    }
-
-    public void setAutoLongitude(Float autoLongitude) {
-        this.autoLongitude = autoLongitude;
-    }
-
-    public String getLastUpdatedAt() {
-        return lastUpdatedAt;
-    }
-
-    public void setLastUpdatedAt(String lastUpdatedAt) {
-        this.lastUpdatedAt = lastUpdatedAt;
-    }
 }

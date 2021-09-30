@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS e_rickshaw;
-CREATE DATABASE e_rickshaw;
-USE e_rickshaw;
+DROP DATABASE IF EXISTS e_rick_test;
+CREATE DATABASE e_rick_test;
+USE e_rick_test;
 
 CREATE TABLE requests (
     request_id int(5) auto_increment primary key,
@@ -68,5 +68,5 @@ CREATE TABLE rides (
     driver_id int(5),
     passenger_id varchar(100),
     stops varchar(30),
-    next_stop int(10)
+    next_stop int(10),
     capacity int(3));

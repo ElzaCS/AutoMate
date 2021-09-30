@@ -7,6 +7,7 @@ import com.example.automate.repositories.PassengerHistoryRepository;
 import com.example.automate.repositories.PassengerRepository;
 import com.example.automate.response.UserLoginRequest;
 import com.example.automate.response.PassengerResponse;
+import io.swagger.annotations.ApiOperation;
 import lombok.var;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,7 @@ public class PassengerController {
     private DriverHistoryRepository driverHistoryRepository;
 
     @GetMapping
+    @ApiOperation(value = "List all passengers")
     public List<PassengerResponse> list() {
 
         List<Passengers> passengers= passengerRepository.findAll();
@@ -53,12 +55,14 @@ public class PassengerController {
     }
 
     @GetMapping
-    @RequestMapping("/{id}")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ApiOperation(value = "Get details of a passenger")
     public Passengers get(@PathVariable Long id) {
         return passengerRepository.getOne(id);
     }
 
     @PostMapping("/signin")
+    @ApiOperation(value = "Sign-up a passenger")
     //@ResponseStatus(HttpStatus.CREATED)
     public Passengers signin(@RequestBody final Passengers famous5){
 
@@ -66,7 +70,7 @@ public class PassengerController {
     }
 
     @PostMapping("/login")
-    //@ResponseStatus(HttpStatus.CREATED)
+    @ApiOperation(value = "Login a passenger")
     public Boolean login(@RequestBody UserLoginRequest creds){
         Passengers existingDriver = passengerRepository.findByRollNo(creds.getRoll_no());
         if (existingDriver.getPassword().equals(creds.getPassword()))
@@ -76,11 +80,13 @@ public class PassengerController {
     }
 
     @RequestMapping(value = "{id}",method = RequestMethod.DELETE)
+    @ApiOperation(value = "Remove a passenger account")
     public void delete(@PathVariable Long id){
         //wont delete children records
         passengerRepository.deleteById(id);
     }
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
+    @ApiOperation(value = "Update details of a passenger")
     public Passengers update(@PathVariable Long id, @RequestBody Passengers famous5){
         Passengers existingFamous5=passengerRepository.getOne(id);
         BeanUtils.copyProperties(famous5, existingFamous5, "id");

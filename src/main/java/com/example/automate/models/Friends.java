@@ -1,11 +1,13 @@
 package com.example.automate.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name="friends")
+@Getter @Setter @Builder @AllArgsConstructor @NoArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Friends {
     @Id
@@ -21,27 +23,4 @@ public class Friends {
     @Column(name="name")
     private String name;
 
-    public Long getFriend_id() {
-        return friend_id;
-    }
-
-    public void setFriend_id(Long friend_id) {
-        this.friend_id = friend_id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getMobile_no() {
-        return mobile_no;
-    }
-
-    public void setMobile_no(String mobile_no) {
-        this.mobile_no = mobile_no;
-    }
 }

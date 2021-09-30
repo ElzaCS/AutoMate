@@ -1,12 +1,14 @@
 package com.example.automate.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 
 @Entity
 @Table(name = "rides")
+@Getter @Setter @Builder @AllArgsConstructor @NoArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Rides {
     @Id
@@ -22,52 +24,4 @@ public class Rides {
     private String stops;
     private String next_stop;
     private Integer capacity;
-
-    public Integer getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(Integer capacity) {
-        this.capacity = capacity;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getDriverId() {
-        return driverId;
-    }
-
-    public void setDriverId(Long driverId) {
-        this.driverId = driverId;
-    }
-
-    public String getNext_stop() {
-        return next_stop;
-    }
-
-    public void setNext_stop(String next_stop) {
-        this.next_stop = next_stop;
-    }
-
-    public String getStops() {
-        return stops;
-    }
-
-    public void setStops(String stops) {
-        this.stops = stops;
-    }
-
-    public String getPassengerId() {
-        return passengerId;
-    }
-
-    public void setPassengerId(String passengerId) {
-        this.passengerId = passengerId;
-    }
 }

@@ -1,8 +1,11 @@
 package com.example.automate.controllers;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -36,9 +39,10 @@ public class HomeController {
     @Value("/rides")
     private String ridesLoc;
 
+    @ApiOperation(value = "Get all parent routes")
     @GetMapping
-    @RequestMapping("/")
-    public Map getStatus() {
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public Map getRoutes() {
         Map map = new HashMap<String, String>();
         //map.put("app-version",appVersion);
         map.put("Greeting", greeting);

@@ -9,6 +9,7 @@ import com.example.automate.repositories.RequestRepository;
 import com.example.automate.repositories.RidesRepository;
 import com.example.automate.response.ChooseAutoRequest;
 import com.example.automate.response.ChooseAutoResponse;
+import io.swagger.annotations.ApiOperation;
 import lombok.var;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,18 +32,20 @@ public class RidesController {
     private RidesRepository ridesRepository;
 
     @GetMapping("")
+    @ApiOperation(value = "List all rides")
     public List<Rides> list() {
         return ridesRepository.findAll();
     }
 
     @GetMapping
-    @RequestMapping("/{id}")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ApiOperation(value = "List all rides taken by a driver")
     public List<Rides> trackAuto(@PathVariable Long id) {
         return ridesRepository.findAllByDriverId(id);
     }
 
     @PostMapping
-    //@ResponseStatus(HttpStatus.CREATED)
+    @ApiOperation(value = "Add a new ride record")
     public Rides create(@RequestBody final Rides famous5) {
 
         return ridesRepository.saveAndFlush(famous5);
@@ -50,12 +53,14 @@ public class RidesController {
 
     @Transactional
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    @ApiOperation(value = "Delete a ride record")
     public void delete(@PathVariable Long id) {
         //wont delete children records
         ridesRepository.deleteAllByDriverId(id);
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
+    @ApiOperation(value = "Update details of a ride record")
     public Rides update(@PathVariable Long id, @RequestBody Rides famous5) {
         Rides existingFamous5 = ridesRepository.getOne(id);
         BeanUtils.copyProperties(famous5, existingFamous5, "id");
@@ -63,6 +68,7 @@ public class RidesController {
     }
 
     @GetMapping("/nextStop")
+    @ApiOperation(value = "Find the closest stop for getting an e-rickshaw")
     public ChooseAutoResponse algo() {
         List<AutoStatus> autostatus = autoStatusRepository.findAll();
 

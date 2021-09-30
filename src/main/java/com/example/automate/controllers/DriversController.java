@@ -6,6 +6,7 @@ import com.example.automate.repositories.DriversRepository;
 import com.example.automate.response.DriverLoginRequest;
 import com.example.automate.response.DriversResponse;
 import com.example.automate.response.UserLoginRequest;
+import io.swagger.annotations.ApiOperation;
 import lombok.var;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ public class DriversController {
     private DriverHistoryRepository driverHistoryRepository;
 
     @GetMapping
+    @ApiOperation(value = "List all drivers")
     public List<DriversResponse> list() {
         // return driversRepository.findAll();
         List<Drivers> drivers = driversRepository.findAll();
@@ -44,20 +46,21 @@ public class DriversController {
     }
 
     @GetMapping
-    @RequestMapping("getDrivers/{id}")
+    @RequestMapping(value = "getDrivers/{id}", method = RequestMethod.GET)
+    @ApiOperation(value = "Get details of a driver")
     public Drivers get(@PathVariable Long id) {
         return driversRepository.getOne(id);
     }
 
     @PostMapping("/signin")
-    //@ResponseStatus(HttpStatus.CREATED)
+    @ApiOperation(value = "Sign-up a driver")
     public Drivers signin(@RequestBody final Drivers famous5) {
 
         return driversRepository.saveAndFlush(famous5);
     }
 
     @PostMapping("/login")
-    //@ResponseStatus(HttpStatus.CREATED)
+    @ApiOperation(value = "Login a driver")
     public Boolean login(@RequestBody final DriverLoginRequest creds) {
         Drivers existingDriver = driversRepository.findByDrivername(creds.getUsername());
         if (existingDriver.getPassword().equals(creds.getPassword()))
@@ -66,13 +69,14 @@ public class DriversController {
             return false;
     }
 
+    @ApiOperation(value = "Remove a driver")
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable Long id) {
         //wont delete children records
         driversRepository.deleteById(id);
     }
 
-
+    @ApiOperation(value = "Update a driver's details")
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
     public Drivers update(@PathVariable Long id, @RequestBody Drivers famous5) {
         Drivers existingFamous5 = driversRepository.getOne(id);

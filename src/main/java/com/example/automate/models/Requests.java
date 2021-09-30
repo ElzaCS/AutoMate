@@ -2,11 +2,13 @@ package com.example.automate.models;
 
 import com.example.automate.util.Points;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "requests")
+@Getter @Setter @Builder @AllArgsConstructor @NoArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Requests {
     @Id
@@ -17,7 +19,10 @@ public class Requests {
     @Column(name="user_id")
     private Long userId;
 
+    @Column(name = "source_latitude")
     private Float sourceLatitude;
+
+    @Column(name = "source_longitude")
     private Float sourceLongitude;
 
     @Column(name="destination_latitude")
@@ -28,60 +33,4 @@ public class Requests {
 
     @Column(name="request_time")
     private String requestTime;
-
-    public Long getRequestId() {
-        return requestId;
-    }
-
-    public void setRequestId(Long requestId) {
-        this.requestId = requestId;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public Float getSourceLatitude() {
-        return sourceLatitude;
-    }
-
-    public void setSourceLatitude(Float sourceLatitude) {
-        this.sourceLatitude = sourceLatitude;
-    }
-
-    public Float getSourceLongitude() {
-        return sourceLongitude;
-    }
-
-    public void setSourceLongitude(Float sourceLongitude) {
-        this.sourceLongitude = sourceLongitude;
-    }
-
-    public Float getDestinationLatitude() {
-        return destinationLatitude;
-    }
-
-    public void setDestinationLatitude(Float destinationLatitude) {
-        this.destinationLatitude = destinationLatitude;
-    }
-
-    public Float getDestinationLongitude() {
-        return destinationLongitude;
-    }
-
-    public void setDestinationLongitude(Float destinationLongitude) {
-        this.destinationLongitude = destinationLongitude;
-    }
-
-    public String getRequestTime() {
-        return requestTime;
-    }
-
-    public void setRequestTime(String requestTime) {
-        this.requestTime = requestTime;
-    }
 }
